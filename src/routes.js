@@ -9,5 +9,8 @@ const router = Router();
 router.use(homeController);
 
 router.use('/movies', movieController);
+router.all('*', (req, res) => {
+    res.render('404');
+})
 
 export default router;
