@@ -6,7 +6,7 @@ const getAll = async (filter = {}) => {
     let movies = await movieData.getAll();
 
     if (filter.search) {
-        movies = movies.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase));
+        movies = movies.filter(movie => movie.title.toLowerCase().includes(filter.search.toLowerCase()));
     }
 
     if (filter.genre) {

@@ -36,7 +36,7 @@ router.get('/:movieId/details', async (req, res) => {
 });
 
 function getRatingViewData(rating) {
-    if (Number.isInteger(rating)) {
+    if (!Number.isInteger(rating)) {
         return 'n\\a';
     }
 
