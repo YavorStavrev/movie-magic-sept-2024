@@ -23,3 +23,4 @@ JS Back-End Course Workshop @SoftUni
     5. Add cast model
     6. Add create cast page
     7. Add attach cast page
+    8. Show cast in details page
