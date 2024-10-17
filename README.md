@@ -26,10 +26,10 @@ JS Back-End Course Workshop @SoftUni
     8. Show cast in details page
 
 Bonus:
- - [ ] Rating helpers
- - [ ] Fix filtering for movies
+ - [x] Rating helpers
+ - [x] Fix filtering for movies
  - [ ] Add character name
- - [ ] Filter cast based on added ones
+ - [x] Filter cast based on added ones
  - [ ] Atlas
 
  Next time:
