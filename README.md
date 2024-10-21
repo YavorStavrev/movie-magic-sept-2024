@@ -39,7 +39,7 @@ Bonus:
     - [ ] Add Auth Controller
     - [ ] Add Auth Service
  - [ ] Add login page
- - [ ] 
+ - [ ] Add dynamic navigation
  - [ ] 
 
  BONUS:
