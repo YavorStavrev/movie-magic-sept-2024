@@ -28,9 +28,11 @@ JS Back-End Course Workshop @SoftUni
 Bonus:
  - [x] Rating helpers
  - [x] Fix filtering for movies
- - [ ] Add character name
+ - [x] Add character name
  - [x] Filter cast based on added ones
- - [ ] Atlas
+ - [x] Atlas
 
- Next time:
-  - [ ] Add model validations
+## Developing Steps - Workshop 3 Authentication
+ - [ ] Fix bug from previous workshop
+ - [ ] Select dropdown with prepopulated value
+ - [ ] Add model validations

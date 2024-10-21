@@ -3,7 +3,11 @@ import Cast from "../models/Cast.js";
 const getAll = () => Cast.find();
 
 // const getAllWithout = (castIds) => Cast.find({ _id: { $nin: castIds } });
-const getAllWithout = (castIds) => Cast.find().nin('_id', castIds);
+const getAllWithout = (casts) => {
+    const castIds = casts.map(cast => cast.cast._id);
+    
+    return Cast.find().nin('_id', casts);
+}
 
 const create = (cast) => {
     return Cast.create(cast);
