@@ -33,6 +33,18 @@ Bonus:
  - [x] Atlas
 
 ## Developing Steps - Workshop 3 Authentication
- - [ ] Fix bug from previous workshop
+ - [x] Fix bug from previous workshop
+ - [ ] Add register page
+    - [ ] Add User model
+    - [ ] Add Auth Controller
+    - [ ] Add Auth Service
+ - [ ] Add login page
+ - [ ] 
+ - [ ] 
+
+ BONUS:
+ - [ ] Automatic login for registered users
  - [ ] Select dropdown with prepopulated value
+
+ ## Next Time
  - [ ] Add model validations
