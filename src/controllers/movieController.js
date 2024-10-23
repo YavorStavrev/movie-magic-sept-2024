@@ -30,7 +30,7 @@ router.get('/:movieId/details', async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId).lean();
 
-   const isOwner = req.user?._id == movie.owner;
+    const isOwner = req.user?._id == movie.owner;
 
     res.render('movies/details', { movie, isOwner });
 });
@@ -38,7 +38,7 @@ router.get('/:movieId/details', async (req, res) => {
 router.get('/:movieId/attach', async (req, res) => {
     const movie = await movieService.getOne(req.params.movieId).lean();
     const casts = await castService.getAllWithout(movie.casts).lean();
-   
+
     res.render('movies/attach', { movie, casts });
 });
 
@@ -49,7 +49,7 @@ router.post('/:movieId/attach', async (req, res) => {
 
 
     await movieService.attach(movieId, castId, character);
-    
+
     res.redirect(`/movies/${movieId}/details`);
 });
 
@@ -61,4 +61,10 @@ router.get('/:movieId/delete', async (req, res) => {
     res.redirect('/');
 });
 
+
+router.get('/:movieId/edit', async (req, res) => {
+    const movieId = req.params.movieId;
+
+    res.render('movies/edit');
+});
 export default router;
