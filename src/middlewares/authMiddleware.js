@@ -13,7 +13,11 @@ export const authMiddleware = (req, res, next) => {
     try {
         const decodedToken = jwt.verify(token, JWT_SECRET);
        
-        console.log(decodedToken);
+        // Add user data to request
+        req.user = {
+            _id: decodedToken._id,
+            email: decodedToken.email,
+        };
         
         return next();
     } catch (err) {
