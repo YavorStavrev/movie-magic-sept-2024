@@ -45,7 +45,6 @@ Bonus:
     - [x] Add token to cookie `npm i cookie-parser`
  - [ ] Add authorization
  - [ ] Add dynamic navigation
- - [ ] 
 
  BONUS:
  - [ ] Automatic login for registered users
