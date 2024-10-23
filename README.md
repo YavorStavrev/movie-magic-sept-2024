@@ -34,10 +34,11 @@ Bonus:
 
 ## Developing Steps - Workshop 3 Authentication
  - [x] Fix bug from previous workshop
- - [ ] Add register page
-    - [ ] Add User model
-    - [ ] Add Auth Controller
-    - [ ] Add Auth Service
+ - [x] Add register page
+    - [x] Add User model
+    - [x] Add Auth Controller
+    - [x] Add Auth Service
+ - [x] Hash password before save
  - [ ] Add login page
  - [ ] Add dynamic navigation
  - [ ] 
@@ -48,3 +49,4 @@ Bonus:
 
  ## Next Time
  - [ ] Add model validations
+ - [ ] Validate rePassword
