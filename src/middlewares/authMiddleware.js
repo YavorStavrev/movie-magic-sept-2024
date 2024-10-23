@@ -1,7 +1,7 @@
-import jwt from 'jsonwebtoken';
+import jwt from '../lib/jwt.js';
 import { JWT_SECRET } from '../config/constants.js';
 
-export const authMiddleware = (req, res, next) => {
+export const authMiddleware = async (req, res, next) => {
     //Check if there is a token in the request
     const token = req.cookies['auth'];
 
@@ -11,7 +11,7 @@ export const authMiddleware = (req, res, next) => {
 
     //Validate token
     try {
-        const decodedToken = jwt.verify(token, JWT_SECRET);
+        const decodedToken = await jwt.verify(token, JWT_SECRET);
 
         // Add user data to request
         const user = {

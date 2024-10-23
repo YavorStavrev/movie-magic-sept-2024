@@ -50,13 +50,15 @@ Bonus:
  - [x] Edit movie
  - [x] Logout
  - [x] Add dynamic navigation
- - [ ] Add route guard
+ - [x] Add route guard
 
  BONUS:
- - [ ] Automatic login for registered users
- - [ ] Make jwt library asynchronous
- - [ ] Select dropdown with prepopulated value
+ - [x] Show user email for logged in users
+ - [x] Automatic login for registered users
+ - [x] Make jwt library asynchronous
+
 
  ## Next Time
  - [ ] Add model validations
  - [ ] Validate rePassword
+ - [ ] Select dropdown with prepopulated value
