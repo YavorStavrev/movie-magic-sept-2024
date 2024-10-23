@@ -21,8 +21,8 @@ const getAll = (filter = {}) => {
     return moviesQuery;
 };
 
-const create = (movie) => {
-    return Movie.create(movie);
+const create = (movie, ownerId) => {
+    return Movie.create({ ...movie, owner: ownerId });
 };
 
 const getOne = (movieId) => {
