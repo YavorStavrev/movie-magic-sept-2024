@@ -39,7 +39,10 @@ Bonus:
     - [x] Add Auth Controller
     - [x] Add Auth Service
  - [x] Hash password before save
- - [ ] Add login page
+ - [x] Add login page
+    - [ ] Validate hashed password
+    - [ ] Create token
+    - [ ] Add token to cookie
  - [ ] Add dynamic navigation
  - [ ] 
 
