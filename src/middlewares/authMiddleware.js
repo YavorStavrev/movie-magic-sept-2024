@@ -12,11 +12,14 @@ export const authMiddleware = (req, res, next) => {
     //Validate token
     try {
         const decodedToken = jwt.verify(token, JWT_SECRET);
+       
         console.log(decodedToken);
         
         return next();
     } catch (err) {
+        res.clearCookie('auth');
 
+        res.redirect('/auth/login');
     }
     //Add user data to request
 };
