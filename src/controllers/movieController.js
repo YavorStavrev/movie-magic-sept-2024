@@ -2,18 +2,25 @@ import { Router } from "express";
 import movieService from "../services/movieService.js";
 import castService from "../services/castService.js";
 import { isAuth } from "../middlewares/authMiddleware.js";
+import { getErrorMessage } from "../utils/errorUtils.js";
 
 const router = Router();
 
-router.get('/create',isAuth, (req, res) => {
+router.get('/create', isAuth, (req, res) => {
     res.render('movies/create');
 });
 
-router.post('/create',isAuth, async (req, res) => {
+router.post('/create', isAuth, async (req, res) => {
     const movieData = req.body;
     const ownerId = req.user?._id;
 
-    await movieService.create(movieData, ownerId);
+    try {
+        await movieService.create(movieData, ownerId);
+    } catch (err) {
+        const errorMessage = getErrorMessage(err);
+        return res.render('movies/create', { error: errorMessage, movie: movieData });
+    }
+
 
     res.redirect('/');
 });
@@ -32,19 +39,19 @@ router.get('/:movieId/details', async (req, res) => {
     const movie = await movieService.getOne(movieId).lean();
 
     const isOwner = movie.owner && movie.owner == req.user?._id;
-    
+
 
     res.render('movies/details', { movie, isOwner });
 });
 
-router.get('/:movieId/attach',isAuth, async (req, res) => {
+router.get('/:movieId/attach', isAuth, async (req, res) => {
     const movie = await movieService.getOne(req.params.movieId).lean();
     const casts = await castService.getAllWithout(movie.casts).lean();
 
     res.render('movies/attach', { movie, casts });
 });
 
-router.post('/:movieId/attach',isAuth, async (req, res) => {
+router.post('/:movieId/attach', isAuth, async (req, res) => {
     const movieId = req.params.movieId;
     const castId = req.body.cast;
     const character = req.body.character;
@@ -55,8 +62,16 @@ router.post('/:movieId/attach',isAuth, async (req, res) => {
     res.redirect(`/movies/${movieId}/details`);
 });
 
-router.get('/:movieId/delete',isAuth, async (req, res) => {
+router.get('/:movieId/delete', isAuth, async (req, res) => {
     const movieId = req.params.movieId;
+
+    // Check if owner
+    const movie = await movieService.getOne(movieId).lean();
+
+    if (movie.owner?.toString() !== req.user._id) {
+        res.setError('You cannot delete this movie!');
+        return res.redirect('/404');
+    }
 
     await movieService.remove(movieId);
 
@@ -64,14 +79,14 @@ router.get('/:movieId/delete',isAuth, async (req, res) => {
 });
 
 
-router.get('/:movieId/edit',isAuth, async (req, res) => {
+router.get('/:movieId/edit', isAuth, async (req, res) => {
     const movieId = req.params.movieId;
     const movie = await movieService.getOne(movieId).lean();
 
     res.render('movies/edit', { movie });
 });
 
-router.post('/:movieId/edit',isAuth, async (req, res) => {
+router.post('/:movieId/edit', isAuth, async (req, res) => {
     const movieData = req.body;
     const movieId = req.params.movieId;
 

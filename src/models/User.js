@@ -4,12 +4,25 @@ import bcrypt from 'bcrypt';
 const SALT_ROUNDS = 10;
 
 const userSchema = new Schema({
-    email: String,
+    email: {
+        type: String,
+        unique: true, // Index
+        validate: [/@[A-Za-z0-9]+.[A-Za-z0-9]+$/, 'Invalid email address!'],
+        minLength: [10, 'Email is too short!'],
+    },
     password: {
         type: String,
-        minLength: [3, 'Your password is too short!'],
+        minLength: [6, 'Your password is too short!'],
+        validate: [/^[A-Za-z0-9]+$/, 'Invalid password characters!'],
     },
 });
+
+userSchema.virtual('rePassword')
+    .set(function (value) {
+        if (value !== this.password) {
+            throw new Error('Password missmatch!');
+        }
+    });
 
 // Hash password before save
 userSchema.pre('save', async function () {
